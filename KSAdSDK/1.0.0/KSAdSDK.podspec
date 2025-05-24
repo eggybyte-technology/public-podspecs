@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.module_name = 'KSAdSDK'
   
   # Support for static framework linking
-  s.static_framework = true
+  # s.static_framework = true
   
   # Ensure proper header search paths
   s.pod_target_xcconfig = {
