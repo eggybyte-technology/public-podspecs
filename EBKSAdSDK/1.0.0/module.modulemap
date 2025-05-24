@@ -1,5 +1,5 @@
 framework module EBKSAdSDK {
-  umbrella header "EBKSAdSDK.h"
+  umbrella header "EBKSAdSDK-umbrella.h"
   
   export *
   module * { export * }

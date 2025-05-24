@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
   s.summary = "EggyByte Ad SDK - EBKSAdSDK Integration"
   s.description = "EggyByte Ad SDK provides comprehensive advertising solutions with KSAdSDK integration for iOS applications, rebranded as EBKSAdSDK."
   s.authors = {"EggyByte Technology 2025"=>"affair@eggybyte.com"}
-  s.homepage = "https://example.com/"
+  s.homepage = "https://github.com/eggybyte-technology/public-podspecs"
   s.frameworks = ["Foundation", "UIKit", "MobileCoreServices", "CoreGraphics", "Security", "SystemConfiguration", "CoreTelephony", "AdSupport", "CoreData", "StoreKit", "AVFoundation", "MediaPlayer", "CoreMedia", "WebKit", "Accelerate", "CoreLocation", "AVKit", "MessageUI", "QuickLook", "AudioToolBox", "JavaScriptCore", "CoreMotion", "Photos"]
   s.libraries = ["z", "resolv.9", "sqlite3", "c++", "c++abi"]
-  s.source = { :http=>"https://p4-ad.adukwai.com/udata/pkg/KSAdSDKTarGz/KSAdSDK-framework-content-1.0.0-140.tar.gz" }
+  s.source = { :git => ".", :tag => s.version.to_s }
   s.license = { :type => "MIT", :text => <<-LICENSE
     MIT License
 
@@ -42,12 +42,12 @@ Pod::Spec.new do |s|
   s.module_name = 'EBKSAdSDK'
   s.swift_version = '5.0'
   
-  # Header files configuration
-  s.public_header_files = ['EBKSAdSDK-umbrella.h', 'KSAdSDK.xcframework/*/KSAdSDK.framework/Headers/*.h']
-  s.source_files = ['EBKSAdSDK-umbrella.h', 'KSAdSDK.xcframework/*/KSAdSDK.framework/Headers/*.h']
+  # Header files configuration for local development
+  s.public_header_files = 'EBKSAdSDK-umbrella.h'
+  s.source_files = 'EBKSAdSDK-umbrella.h'
   
   # Module map configuration for proper Swift interop
-  s.preserve_paths = ['KSAdSDK.xcframework', 'module.modulemap', 'EBKSAdSDK-umbrella.h']
+  s.preserve_paths = ['KSAdSDK.xcframework/**/*', 'module.modulemap', 'EBKSAdSDK-umbrella.h']
   s.module_map = 'module.modulemap'
   
   # Pod configuration
@@ -60,7 +60,8 @@ Pod::Spec.new do |s|
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
     'OTHER_LDFLAGS' => '-framework KSAdSDK',
-    'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/EBKSAdSDK/1.0.0'
+    'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/EBKSAdSDK/1.0.0',
+    'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
   }
   
   s.user_target_xcconfig = {

@@ -15,10 +15,27 @@ This podspec provides a Swift-friendly integration of KSAdSDK under the EggyByte
 - ✅ Modern iOS deployment target (iOS 12.0+)
 - ✅ All ad formats: Banner, Splash, Interstitial, Rewarded Video, Native, Feed, Draw
 - ✅ Server-side bidding support
+- ✅ Local development support
 
 ## Installation
 
+### Option 1: Local Pod (Recommended for development)
+
 Add the following to your `Podfile`:
+
+```ruby
+pod 'EBKSAdSDK', :path => './path/to/EBKSAdSDK/1.0.0'
+```
+
+### Option 2: Git Repository
+
+Add the following to your `Podfile`:
+
+```ruby
+pod 'EBKSAdSDK', :git => 'https://github.com/EggyByte/EBKSAdSDK.git', :tag => '1.0.0'
+```
+
+### Option 3: Version-based (if published)
 
 ```ruby
 pod 'EBKSAdSDK', '1.0.0'
@@ -166,10 +183,12 @@ The SDK is configured with the following structure:
 
 ## Files Included
 
-- `EBKSAdSDK.podspec` - Pod specification with Swift integration
+- `EBKSAdSDK.podspec` - Pod specification with Swift integration and local development support
 - `module.modulemap` - Module map for proper Swift interop
 - `EBKSAdSDK-umbrella.h` - Comprehensive umbrella header exposing all SDK functionality
-- `KSAdSDK.xcframework` - The actual framework (downloaded from source)
+- `KSAdSDK.xcframework` - The actual framework (includes all architectures)
+- `ExampleUsage.swift` - Comprehensive Swift usage examples
+- `Example-Podfile` - Example Podfile configuration
 
 ## Technical Details
 
@@ -190,10 +209,25 @@ The SDK links against the following system frameworks:
 ### Build Configuration
 
 The podspec includes optimized build settings for:
+- Local development support
 - Static framework configuration
 - Proper architecture exclusions for simulator
 - Framework search paths
 - Swift module include paths
+- Non-modular includes support
+
+## Local Development Setup
+
+1. **Clone or download the EBKSAdSDK repository**
+2. **Add to your Podfile with local path**:
+   ```ruby
+   pod 'EBKSAdSDK', :path => './path/to/EBKSAdSDK/1.0.0'
+   ```
+3. **Run pod install**
+4. **Import in your Swift files**:
+   ```swift
+   import EBKSAdSDK
+   ```
 
 ## Migration from KSAdSDK
 
@@ -212,6 +246,7 @@ The API remains the same, only the module name changes.
 1. **"Module not found" error**
    - Ensure you're using `import EBKSAdSDK` (not `import KSAdSDK`)
    - Clean and rebuild your project
+   - Check that the path in your Podfile is correct
 
 2. **Missing Content Union APIs**
    - All KSCU APIs are now properly exposed through the umbrella header
@@ -225,10 +260,14 @@ The API remains the same, only the module name changes.
    - The comprehensive umbrella header should automatically expose all SDK headers
    - All KSCU, KSEU, and core ad components are included
 
+5. **Local development issues**
+   - Ensure the path in your Podfile points to the correct directory
+   - Make sure all files (especially `module.modulemap` and `EBKSAdSDK-umbrella.h`) are present
+
 ### Support
 
 For issues related to this integration, contact EggyByte Technology 2025 at affair@eggybyte.com
 
 ## License
 
-MIT License - See the podspec file for full license text. 
+MIT License - See the podspec file for full license text.

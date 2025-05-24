@@ -6,8 +6,14 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'YourApp' do
-  # EggyByte Ad SDK Integration
-  pod 'EBKSAdSDK', '1.0.0'
+  # EggyByte Ad SDK Integration - Local Development
+  pod 'EBKSAdSDK', :path => '../EBKSAdSDK/1.0.0'
+  
+  # Alternative: Git Repository
+  # pod 'EBKSAdSDK', :git => 'https://github.com/EggyByte/EBKSAdSDK.git', :tag => '1.0.0'
+  
+  # Alternative: Version-based (if published)
+  # pod 'EBKSAdSDK', '1.0.0'
   
   # Other pods you might need
   # pod 'Alamofire'
