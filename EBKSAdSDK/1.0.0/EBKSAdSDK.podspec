@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "EBKSAdSDK"
-  s.version = "v1.0.0"
+  s.version = "1.0.0"
   s.summary = "EggyByte Ad SDK - EBKSAdSDK Integration"
   s.description = "EggyByte Ad SDK provides comprehensive advertising solutions with KSAdSDK integration for iOS applications, rebranded as EBKSAdSDK."
   s.authors = {"EggyByte Technology 2025"=>"affair@eggybyte.com"}
