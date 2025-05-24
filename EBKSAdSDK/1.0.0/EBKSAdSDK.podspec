@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   
   # Pod configuration
   s.requires_arc = true
-  s.static_framework = true
+  # s.static_framework = true
   
   # Additional compiler flags
   s.pod_target_xcconfig = {
